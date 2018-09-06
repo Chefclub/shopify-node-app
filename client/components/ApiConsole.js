@@ -1,18 +1,13 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Layout, Stack, Card, TextField, Button } from '@shopify/polaris';
-import ObjectInspector from 'react-object-inspector';
-import { updatePath, updateParams, sendRequest } from '../actions';
-
-import VerbPicker from './VerbPicker';
+import { Layout,Card,ResourceList,Avatar,TextStyle } from '@shopify/polaris';
 
 class ApiConsole extends Component {
   render() {
     return (
       <Layout sectioned>
-        { this.renderForm() }
-        { this.renderResponse() }
+        {this.renderForm()}
       </Layout>
     )
   }
@@ -23,67 +18,50 @@ class ApiConsole extends Component {
     return (
       <div>
         <Layout.Section>
-          <Stack>
-            <VerbPicker verb={requestFields.verb} />
-            <TextField
-              value={requestFields.path}
-              onChange={path => dispatch(updatePath(path))}
-            />
-            <Button primary onClick={() => dispatch(sendRequest(requestFields))}>
-              Send
-            </Button>
-          </Stack>
-        </Layout.Section>
+            <Card>
+              <ResourceList
+                resourceName={{ singular: 'customer', plural: 'customers' }}
+                items={[
+                  {
+                    id: 341,
+                    name: 'Shop',
+                    value: this.props.shopOrigin,
+                    avatarSource: 'https://image.flaticon.com/icons/svg/138/138310.svg'
+                  },
+                  {
+                    id: 256,
+                    name: 'Access Token',
+                    avatarSource: 'https://image.flaticon.com/icons/svg/179/179543.svg',
+                    value: this.props.apiKey,
+                  },
+                  {
+                    id: 439,
+                    name: 'Scopes',
+                    avatarSource: 'https://image.flaticon.com/icons/svg/1090/1090665.svg',
+                    value: 'write_fulfillments, read_fulfillments,read_shipping,write_shipping,read_orders, write_orders, write_products',
+                  },
+                ]}
+                renderItem={(item) => {
+                  const { id, name, value,avatarSource } = item;
+                  const media = <Avatar customer size="large" name={name} source={avatarSource} />;
 
-        {this.renderParams()}
+                  return (
+                    <ResourceList.Item
+                      id={id}
+                      media={media}
+                      accessibilityLabel={`View details for ${name}`}
+                    >
+                      <h3>
+                        <TextStyle variation="strong">{name}</TextStyle>
+                      </h3>
+                      <div>{value}</div>
+                    </ResourceList.Item>
+                  );
+                }}
+              />
+            </Card>
+        </Layout.Section>
       </div>
-    )
-  }
-
-  renderParams() {
-    const { dispatch, requestFields } = this.props;
-
-    if (requestFields.verb === 'GET') {
-      return null;
-    } else {
-      return (
-        <Layout.Section>
-          <TextField
-            label="Request Params"
-            value={requestFields.params}
-            onChange={params => dispatch(updateParams(params))}
-            multiline={12}
-          />
-        </Layout.Section>
-      );
-    }
-  }
-
-  renderResponse() {
-    const { requestInProgress, requestError, responseBody } = this.props;
-
-    if (responseBody === '') {
-      return null;
-    }
-
-    if (requestInProgress) {
-      return (
-        <Layout.Section>
-          'requesting...';
-        </Layout.Section>
-      )
-    }
-
-    const data = JSON.parse(responseBody)
-
-    return (
-      <Layout.Section>
-        <Card>
-          <div style={{margin: '15px 15px'}}>
-            <ObjectInspector data={data} initialExpandedPaths={['root', 'root.*']}/>
-          </div>
-        </Card>
-      </Layout.Section>
     )
   }
 }
