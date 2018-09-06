@@ -2,7 +2,7 @@ version: "3"
 services:
   note-app:
     container_name: shopify-app-c
-    image: "shopify-app:dev"
+    image: "eu.gcr.io/chefclub-158403/shopify-app:dev"
     ports:
       - "3000:3000"
     environment:
