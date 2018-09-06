@@ -9,3 +9,4 @@ Makefile
 LICENSE
 Dockerfile
 CONTRIBUTING.md
+.env
