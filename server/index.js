@@ -31,9 +31,15 @@ const shopifyConfig = {
   scope: ['write_fulfillments, read_fulfillments,read_shipping,write_shipping,read_orders, write_orders, write_products'],
   shopStore: new MemoryStrategy(),
   afterAuth(request, response) {
-    const { session: { accessToken, shop } } = request;
+    if (request) {
+      const { session: { accessToken, shop } } = request;
 
-    return response.redirect('/');
+      return response.redirect('/');
+    } else {
+      console.log("Something went wrong with Shopify");
+      response.status(error.status || 503);
+      response.render('error');
+    }
   },
 };
 
