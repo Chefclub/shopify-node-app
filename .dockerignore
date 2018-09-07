@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+logs/*
+prod.docker-compose.yml
+prod.Dockerfile
+docker-compose.yml
+README.md
+Makefile
+LICENSE
+Dockerfile
+CONTRIBUTING.md
+.env

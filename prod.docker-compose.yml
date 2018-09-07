@@ -1,0 +1,10 @@
+version: "3"
+services:
+  note-app:
+    container_name: shopify-app-pc
+    image: "eu.gcr.io/chefclub-158403/shopify-app:prod"
+    ports:
+      - "3000:3000"
+    environment:
+      - SHOPIFY_APP_PORT=3000
+    command: node bin/test.js

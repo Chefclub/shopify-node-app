@@ -28,28 +28,14 @@ const shopifyConfig = {
   host: SHOPIFY_APP_HOST,
   apiKey: SHOPIFY_APP_KEY,
   secret: SHOPIFY_APP_SECRET,
-  scope: ['write_orders, write_products'],
+  scope: ['write_fulfillments, read_fulfillments,read_shipping,write_shipping,read_orders, write_orders, write_products'],
   shopStore: new MemoryStrategy(),
   afterAuth(request, response) {
     const { session: { accessToken, shop } } = request;
 
-    registerWebhook(shop, accessToken, {
-      topic: 'orders/create',
-      address: `${SHOPIFY_APP_HOST}/order-create`,
-      format: 'json'
-    });
-
     return response.redirect('/');
   },
 };
-
-const registerWebhook = function(shopDomain, accessToken, webhook) {
-  const shopify = new ShopifyAPIClient({ shopName: shopDomain, accessToken: accessToken });
-  shopify.webhook.create(webhook).then(
-    response => console.log(`webhook '${webhook.topic}' created`),
-    err => console.log(`Error creating webhook '${webhook.topic}'. ${JSON.stringify(err.response.body)}`)
-  );
-}
 
 const app = express();
 const isDevelopment = NODE_ENV !== 'production';
@@ -106,23 +92,16 @@ app.use('/shopify', routes);
 // Client
 app.get('/', withShop({authBaseUrl: '/shopify'}), function(request, response) {
   const { session: { shop, accessToken } } = request;
+  console.log("shop:", shop)
+  console.log("accessToken:", accessToken)
+  console.log("----------------------------")
+
   response.render('app', {
     title: 'Shopify Node App',
     apiKey: shopifyConfig.apiKey,
     shop: shop,
   });
 });
-
-app.post('/order-create', withWebhook((error, request) => {
-  if (error) {
-    console.error(error);
-    return;
-  }
-
-  console.log('We got a webhook!');
-  console.log('Details: ', request.webhook);
-  console.log('Body:', request.body);
-}));
 
 // Error Handlers
 app.use(function(req, res, next) {

@@ -14,7 +14,7 @@ class App extends Component {
           breadcrumbs={[{ content: 'Home', url: '/foo' }]}
           primaryAction={{ content: 'Add something' }}
         >
-          <ApiConsole />
+          <ApiConsole shopOrigin={shopOrigin} apiKey={apiKey}/>
         </Page>
       </AppProvider>
     );

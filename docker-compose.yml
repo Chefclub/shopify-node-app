@@ -1,0 +1,9 @@
+version: "3"
+services:
+  shopify-app:
+    container_name: shopify-app
+    image: "eu.gcr.io/chefclub-158403/shopify-app:dev"
+    ports:
+      - "3000:3000"
+    environment:
+      - SHOPIFY_APP_PORT=3000
