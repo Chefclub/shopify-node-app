@@ -10,9 +10,8 @@ class App extends Component {
     return (
       <AppProvider shopOrigin={shopOrigin} apiKey={apiKey}>
         <Page
-          title="My application"
-          breadcrumbs={[{ content: 'Home', url: '/foo' }]}
-          primaryAction={{ content: 'Add something' }}
+          title="OAuth information"
+          breadcrumbs={[{ content: 'Home', url: '/chefclub-app' }]}
         >
           <ApiConsole shopOrigin={shopOrigin} apiKey={apiKey}/>
         </Page>
