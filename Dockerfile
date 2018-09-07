@@ -1,11 +1,9 @@
-FROM node:9
+FROM node:8.11.4-alpine
 
 WORKDIR /app
-
 COPY . /app
-
 ENV PORT 3000
-
 EXPOSE 3000
 
-CMD ["node"]
+RUN yarn install
+CMD ["yarn", "prod"]
