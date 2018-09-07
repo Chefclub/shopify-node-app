@@ -5,5 +5,5 @@ COPY . /app
 ENV PORT 3000
 EXPOSE 3000
 
-RUN yarn install && yarn build
-CMD ["yarn", "prod"]
+RUN yarn install
+CMD ["yarn", "start"]
