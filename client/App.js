@@ -8,12 +8,12 @@ class App extends Component {
     const { apiKey, shopOrigin,accessToken } = window;
 
     return (
-      <AppProvider shopOrigin={shopOrigin} apiKey={apiKey} accessToken={accessToken}>
+      <AppProvider shopOrigin={shopOrigin} apiKey={apiKey}>
         <Page
           title="OAuth information"
           breadcrumbs={[{ content: 'Home', url: '/chefclub-app' }]}
         >
-          <ApiConsole shopOrigin={shopOrigin} apiKey={apiKey}/>
+          <ApiConsole shopOrigin={shopOrigin} apiKey={apiKey} accessToken={accessToken}/>
         </Page>
       </AppProvider>
     );
