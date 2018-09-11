@@ -30,7 +30,7 @@ class ApiConsole extends Component {
                   },
                   {
                     id: 256,
-                    name: 'Access Token',
+                    name: 'ApiKey',
                     avatarSource: 'https://image.flaticon.com/icons/svg/179/179543.svg',
                     value: this.props.apiKey,
                   },
