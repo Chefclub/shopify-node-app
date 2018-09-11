@@ -5,10 +5,10 @@ import ApiConsole from './components/ApiConsole'
 
 class App extends Component {
   render() {
-    const { apiKey, shopOrigin } = window;
+    const { apiKey, shopOrigin,accessToken } = window;
 
     return (
-      <AppProvider shopOrigin={shopOrigin} apiKey={apiKey}>
+      <AppProvider shopOrigin={shopOrigin} apiKey={apiKey} accessToken={accessToken}>
         <Page
           title="OAuth information"
           breadcrumbs={[{ content: 'Home', url: '/chefclub-app' }]}

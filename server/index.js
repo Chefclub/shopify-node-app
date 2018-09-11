@@ -105,6 +105,7 @@ app.get('/', withShop({authBaseUrl: '/shopify'}), function(request, response) {
   response.render('app', {
     title: 'Shopify Node App',
     apiKey: shopifyConfig.apiKey,
+    accessToken:accessToken,
     shop: shop,
   });
 });
