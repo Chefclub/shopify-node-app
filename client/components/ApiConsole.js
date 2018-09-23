@@ -51,7 +51,7 @@ class ApiConsole extends Component {
                   id: 439,
                   name: 'Scopes',
                   avatarSource: 'https://image.flaticon.com/icons/svg/1090/1090665.svg',
-                  value: 'write_fulfillments, read_fulfillments,read_shipping,write_shipping,read_orders, write_orders, write_products,read_all_orders',
+                  value: 'write_fulfillments, read_fulfillments,read_shipping,read_all_orders,write_shipping,read_customers,read_orders,write_orders,write_products',
                 },
               ]}
               renderItem={(item) => {
