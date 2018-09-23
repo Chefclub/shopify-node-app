@@ -28,7 +28,7 @@ const shopifyConfig = {
   host: SHOPIFY_APP_HOST,
   apiKey: SHOPIFY_APP_KEY,
   secret: SHOPIFY_APP_SECRET,
-  scope: ['write_fulfillments, read_fulfillments,read_shipping,read_all_orders,write_shipping,read_orders, write_orders, write_products'],
+  scope: ['write_fulfillments, read_fulfillments,read_shipping,read_all_orders,write_shipping,read_customers,write_customers,read_orders,write_orders,write_products'],
   shopStore: new MemoryStrategy(),
   afterAuth(request, response) {
     if (request) {
