@@ -11,7 +11,7 @@ I don't save the tokens or anything but I recommand you clone the code yourself 
 ## Grap the token using our app
 ### Install the app
 - Go to the app's [website](https://shopify-app.chefclub.tools)
-- Chnage the TO_CHANGE part to your shop name, accept the required scopes install the app. 
+- Chnage the TO_CHANGE part to your shop name, accept the required scopes and install the app. 
 ![](https://i.ibb.co/s5gHTjM/Screenshot-from-2019-07-04-18-25-30.png)
 - That's it now you will be greeted with the credentials
 ![](https://i.ibb.co/LCCtWgD/Screenshot-from-2019-06-30-18-02-51-1.jpg)
@@ -30,7 +30,7 @@ I don't save the tokens or anything but I recommand you clone the code yourself 
 - Set the whitelisted URL to `{{ HOST }}/shopify/auth/callback`
 - Go to extensions tab and enable “Embed in Shopify admin”
 
-### Configure and add to a store
+### Configure the .env file
 - Rename `.env.example` to `.env` and
   - Set Add HOST from your tunnel service as `SHOPIFY_APP_HOST`
   - Add the api key from partners dash as `SHOPIFY_APP_KEY`
@@ -39,7 +39,7 @@ I don't save the tokens or anything but I recommand you clone the code yourself 
 ### If you are using Yarn
 - Run `yarn install && yarn run start`
 
-### if you are Using Dokcer
+### If you are Using Dokcer
 - Run `make build && make run`
 
 ### Get the credentials
