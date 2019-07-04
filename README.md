@@ -1,30 +1,23 @@
 # Shopify Node App
 
-The goal of this example app is to provide a starting point for Shopify app developers so that they will be able to quickly
-spin up an embedded Shopify app using Node and Express.js and get started using the Polaris design system and React components.
+The goal of this app is to provide a quick way for Shopify app developers to grap test shop tokens. 
+I don't save the tokens or anything but I recommand you clone the code yourself and run the app using yarn or docker.   
 
-This example app uses Node, Express, Webpack, React, Redux, and Shopify/polaris
+## Requierements
+- If you are going to use this deployed app all you need is this [link](https://shopify-app.chefclub.tools)  
+- Node, Yarn and ngrok if you are using Yarn to run the app yourself
+- Docker, Docker Compose and ngrok if you are using Docker to run the app yourself 
 
-## Features
-- [x] React app using [Polaris](https://polaris.shopify.com/)
-- [x] Shopify Authentication
-- [x] Get API data from Shopify and pass it to React
-- [x] Hot reloading with Webpack
-- [x] Example data flow with Redux and Polaris React components
-- [x] Example webhook set up
+## Grap the token using our app
+### Install the app
+- Go to the app's [website](https://shopify-app.chefclub.tools)
+- Chnage the TO_CHANGE part to your shop name, accept the required scopes install the app. 
+![](https://i.ibb.co/s5gHTjM/Screenshot-from-2019-07-04-18-25-30.png)
+- That's it now you will be greeted with the credentials
+![](https://i.ibb.co/LCCtWgD/Screenshot-from-2019-06-30-18-02-51-1.jpg)
 
-## Commands
-- `yarn run start` run the server
-- `yarn run dev` run it in development mode with hotreloading
-- `yarn run prod` run it in production mode with compiled assets
-- `yarn run clean` clean the compiled assets directory
 
 ## Running the project locally
-
-### Install project dependencies
-- Install Node.js version 8.1.0 or higher. We recommend using [nvm](https://github.com/creationix/nvm) to manage Node versions.
-- Install the [Yarn.js](https://yarnpkg.com/en/docs/install) package manager. Yarn is an alternative to npm that is faster and more reliable.
-- Install project dependencies with `yarn install`
 
 ### Allow your app to talk to Shopify
 - Create a tunnel to localhost:3000 using [forward](https://forwardhq.com/) or [ngrok](https://ngrok.com/)
@@ -42,34 +35,15 @@ This example app uses Node, Express, Webpack, React, Redux, and Shopify/polaris
   - Set Add HOST from your tunnel service as `SHOPIFY_APP_HOST`
   - Add the api key from partners dash as `SHOPIFY_APP_KEY`
   - Add the api secret from partners dash as `SHOPIFY_APP_SECRET`
+
+### If you are using Yarn
 - Run `yarn install && yarn run start`
+
+### if you are Using Dokcer
+- Run `make build && make run`
+
+### Get the credentials
 - Open a browser to `{{ HOST }}/install`
 - Enter your store’s domain and hit install
+- Get the credentials
 - 🚀 🎉
-
-## Architecture
-
-There are three main sections that provide the foundations for this example. They are organized as follows:
-
-### `server`
-This folder provides the Express.js server as well as a few basic views.
-The server provides some example endpoints that demonstrate mounting the Shopify routes for installation and authentication, hosting the React app
-with an API proxy, and a basic webhook.
-
-The code here is mostly glue code, with the bulk of the actual functionality provided by the modules in `shopify-express`.
-
-### `shopify-express`
-This example app consumes the [shopify-express](https://github.com/shopify/shopify-express-app) library to quickly connect to the Shopify API.
-
-### `shopify-api-node`
-This example app uses the Official [shopify-api-node](https://github.com/MONEI/Shopify-api-node) library to connect to the Shopify API.
-
-### `client`
-This folder contains the UI demo using Polaris React components and Redux to manage app state.
-It has two subfolders called `store` and `actions` which are Redux concepts.
-
-`store` is the thing that models the state of the app. Every Redux action sends a message to a function called a 'reducer'.
-The reducer uses the information in the message to progress the state of the app.
-For simplicity, we included the reducer in the same file as the store configuration.
-
-`actions` are the functions that are fired from interactions with the UI.
