@@ -1,17 +1,17 @@
 # Shopify Node App
 
-The goal of this app is to provide a quick way for Shopify app developers to grap test shop tokens. 
-I don't save the tokens or anything but I recommand you clone the code yourself and run the app using yarn or docker.   
+The goal of this app is to provide a quick way for Shopify app developers to grap shop access tokens. 
+The app doesn't save your access tokens but it is recommanded that you clone the code yourself and run the app locally using yarn or docker.   
 
 ## Requierements
-- If you are going to use this deployed app all you need is this [link](https://shopify-app.chefclub.tools)  
+- If you are going to use the already deployed app all you need is this [link](https://shopify-app.chefclub.tools)  
 - Node, Yarn and ngrok if you are using Yarn to run the app yourself
-- Docker, Docker Compose and ngrok if you are using Docker to run the app yourself 
+- Docker, Docker Compose and ngrok if you are using Docker to run
 
-## Grap the token using our app
+## Grap an access token using our app
 ### Install the app
 - Go to the app's [website](https://shopify-app.chefclub.tools)
-- Chnage the TO_CHANGE part to your shop name, accept the required scopes and install the app. 
+- Chnage the `TO_CHANGE` part to your shop name, accept the required scopes and install the app. 
 ![](https://i.ibb.co/s5gHTjM/Screenshot-from-2019-07-04-18-25-30.png)
 - That's it now you will be greeted with the credentials
 ![](https://i.ibb.co/LCCtWgD/Screenshot-from-2019-06-30-18-02-51-1.jpg)
